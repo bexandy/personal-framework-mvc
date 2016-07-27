@@ -1,0 +1,18 @@
+RewriteEngine On
+
+# El RewriteCond sirve para verificar condiciones antes de aplicar un RewriteRule
+
+# modificador !-d verifica que el valor que estas chequeando NO sea un directorio REAL en el servidor.
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# modificador !-f verifica que el valor que estas chequeando NO sea un archivo REAL en el servidor.
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# modificador !-l verifica que el valor que estas chequeando NO sea un enlace simbolico REAL en el servidor.
+RewriteCond %{REQUEST_FILENAME} !-l
+
+# QSA hace que al cumplir la regla agregue todo el query string al final, luego de id=$1
+# modificador L, hace que se termine la ejecucion de las reglas en esa regla.
+# no se siguen ejecutando las reglas que siguen debajo de esta .
+
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]

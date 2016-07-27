@@ -1,0 +1,56 @@
+/* CSS Document */
+body {color:#913131; }
+
+#top_menu {
+  float: right;
+}
+
+#top_menu ul {
+
+  background-color: #F4F4F4;
+  list-style: none;
+  border: 1px solid #7C7C7C;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#top_menu ul li a {
+  color: #333;
+  text-decoration: none;
+  padding: .3em;
+  display: block;
+  border-left: 1px solid #FFF;
+  border-right: 1px solid #7C7C7C;
+}
+
+#top_menu a.current {
+  color: white ;
+  background: darkred;
+}
+
+#top_menu ul li a:hover {
+  background-color: #E6E1E1;
+}
+
+#top_menu ul li {
+  float:left;
+  width: 50%;
+}
+
+#contenido {
+  padding: 10px;
+}
+
+#contenido h2 {
+  color: darkred;
+  font-weight: bold;
+}
+
+#footer {
+  background: darkred;
+  color: white;
+  padding: 10px;
+}
+
+/*  0269-5114219 casa de yasellys */

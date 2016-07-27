@@ -1,0 +1,21 @@
+<section class="callaction">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="alert alert-danger">
+          <strong>Error!</strong> <?php if ($this->mensaje) echo $this->mensaje; ?>
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <a href="<?php echo BASE_URL; ?>" class="btn btn-theme"><i class="icon icon-house"></i> Ir al Inicio</a>
+        <a href="javascript:history.back();" class="btn btn-theme"><i class="icon icon-fatundo"></i> Volver a la página anterior</a>
+
+        <?php if (!Session::get('autenticado')): ?>
+          <a href="<?php echo BASE_URL.'login'; ?>" class="btn btn-success "><i class="icon icon-user"></i> Iniciar Sesión</a>
+        <?php endif ?>
+
+
+      </div>
+    </div>
+  </div>
+</section>

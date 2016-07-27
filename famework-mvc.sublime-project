@@ -1,0 +1,20 @@
+{
+	"folders":
+	[
+		{
+			"path": "/home/brodriguez/public_html/moderna/moderna"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings":
+	{
+		"xdebug":
+		{
+			"break_on_start": true,
+			"max_depth": 3,
+			"url": "http://framework-mvc.local/"
+		}
+	}
+}
