@@ -3,13 +3,17 @@
 /**
  * Objeto que maneja el trabajo con las vistas
  */
-class View
+
+//require_once ROOT.'libs'.DS.'smarty'.DS.'libs'.DS.'Smarty.class.php';
+
+class View /*extends Smarty*/
 {
   private $_controlador;
   private $_js;
 
   public function __construct(Request $peticion)
   {
+   // parent::__construct();
     $this->_controlador = $peticion->getControlador();
     $this->_js = array();
   }

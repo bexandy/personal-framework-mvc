@@ -14,15 +14,11 @@ class registroModel extends Model
   public function verificarUsuario($usuario)
   {
     $id = $this->_db->query(
-          "SELECT * FROM usuarios ".
-          "WHERE usuario = '".$usuario."'"
+          "SELECT id, codigo FROM usuarios WHERE usuario = '".$usuario."'"
       );
 
-    if ($id->fetch()) {
-      return true;
-    }
+    return $id->fetch();
 
-    return false;
   }
 
     public function verificarEmail($email)
@@ -41,9 +37,10 @@ class registroModel extends Model
 
   public function registrarUsuario($nombre, $usuario, $password, $email)
   {
+    $random = rand(1782598471,9999999999);
     $this->_db->prepare(
                 "INSERT INTO usuarios VALUES ".
-                "(null, :nombre, :usuario, :password, :email, :role, :estado, :fecha)")
+                "(null, :nombre, :usuario, :password, :email, :role, :estado, :fecha, :codigo)")
               ->execute(
                 array(
                   ":nombre" => $nombre,
@@ -51,11 +48,27 @@ class registroModel extends Model
                   ":password" => Hash::getHash('sha1',$password,HASH_KEY),
                   ":email" => $email,
                   ":role" => "usuario",
-                  ":estado" => 1,
+                  ":estado" => 0,
                   ":fecha" => date('Y-m-d'),
-
+                  ":codigo" => $random,
                   )
                 );
+  }
+
+  public function getUsuario($id, $codigo)
+  {
+    $usuario = $this->_db->query(
+              "SELECT * FROM usuarios WHERE id = $id AND codigo = '$codigo'"
+      );
+    return $usuario->fetch();
+  }
+
+  public function activarUsuario($id, $codigo)
+  {
+    $this->_db->query(
+            "UPDATE usuarios SET estado = 1 ".
+            "WHERE id = $id AND codigo = '$codigo'"
+      );
   }
 }
  ?>
