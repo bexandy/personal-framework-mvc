@@ -1201,7 +1201,7 @@ class Smarty extends Smarty_Internal_TemplateBase
     public function _realpath($path, $realpath = null)
     {
         $nds = DS == '/' ? '\\' : '/';
-        // normalize DS 
+        // normalize DS
         $path = str_replace($nds, DS, $path);
         preg_match('%^(?<root>(?:[[:alpha:]]:[\\\\]|/|[\\\\]{2}[[:alpha:]]+|[[:print:]]{2,}:[/]{2}|[\\\\])?)(?<path>(?:[[:print:]]*))$%',
                    $path, $parts);

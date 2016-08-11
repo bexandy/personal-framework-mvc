@@ -15,36 +15,40 @@ class postController extends Controller
   public function index()
   {
 
-    $this->_view->posts = $this->_post->getPosts();
-
+    //$this->_view->posts = $this->_post->getPosts();
+    $this->_view->assign('posts',$this->_post->getPosts());
       // de esta forma se pasan parámetros a la vista
-    $this->_view->titulo = 'Post - '.APP_NAME;
-
+    //$this->_view->titulo = 'Post - '.APP_NAME;
+    $this->_view->assign('titulo','Post - '.APP_NAME);
       // llamamos al metodo renderizar para mostrar la vista
     $this->_view->renderizar('index','post');
   }
 
   public function nuevo()
   {
-    Session::accesoEstricto(array('usuario'));
+    //Session::accesoEstricto(array('usuario'));
 
-    $this->_view->titulo = 'Nuevo Post - '.APP_NAME;
+    //$this->_view->titulo = 'Nuevo Post - '.APP_NAME;
+    $this->_view->assign('titulo','Nuevo Post - '.APP_NAME);
     $this->_view->setJs(array('nuevo'));
 
       //$this->_view->prueba = $this->getTexto('titulo');
       //$this->_view->prueba = $this->getInt('guardar');
 
     if ($this->getInt('guardar') == 1) {
-      $this->_view->datos = $_POST;
+      //$this->_view->datos = $_POST;
+      $this->_view->assign('datos',$_POST);
 
       if (!$this->getTexto('titulo')) {
-        $this->_view->_error = 'Debe introducir el título del post';
+        //$this->_view->_error = 'Debe introducir el título del post';
+        $this->_view->assign('_error','Debe introducir el título del post');
         $this->_view->renderizar('nuevo','post');
         exit;
       }
 
       if (!$this->getTexto('cuerpo')) {
-        $this->_view->_error = 'Debe introducir el cuerpo del post';
+        //$this->_view->_error = 'Debe introducir el cuerpo del post';
+        $this->_view->assign('_error','Debe introducir el cuerpo del post');
         $this->_view->renderizar('nuevo','post');
         exit;
       }
@@ -59,7 +63,7 @@ class postController extends Controller
     $this->_view->renderizar('nuevo','post');
   }
 
-  public function editar($id)
+  public function editar($id='')
   {
     if (!$this->filtrarInt($id)) {
       $this->redireccionar('post');
@@ -69,20 +73,24 @@ class postController extends Controller
       $this->redireccionar('post');
     }
 
-    $this->_view->titulo = 'Editar Post - '.APP_NAME;
+    //$this->_view->titulo = 'Editar Post - '.APP_NAME;
+    $this->_view->assign('titulo','Editar Post - '.APP_NAME);
     $this->_view->setJs(array('nuevo'));
 
     if ($this->getInt('guardar') == 1) {
-      $this->_view->datos = $_POST;
+      //$this->_view->datos = $_POST;
+      $this->_view->assign('datos',$_POST);
 
       if (!$this->getTexto('titulo')) {
-        $this->_view->_error = 'Debe introducir el título del post';
+        //$this->_view->_error = 'Debe introducir el título del post';
+        $this->_view->assign('_error','Debe introducir el título del post');
         $this->_view->renderizar('editar','post');
         exit;
       }
 
       if (!$this->getTexto('cuerpo')) {
-        $this->_view->_error = 'Debe introducir el cuerpo del post';
+        //$this->_view->_error = 'Debe introducir el cuerpo del post';
+        $this->_view->assign('_error','Debe introducir el cuerpo del post');
         $this->_view->renderizar('editar','post');
         exit;
       }
@@ -96,12 +104,13 @@ class postController extends Controller
       $this->redireccionar('post');
     }
 
-    $this->_view->datos = $this->_post->getPost($this->filtrarInt($id));
+    //$this->_view->datos = $this->_post->getPost($this->filtrarInt($id));
+    $this->_view->assign('datos',$this->_post->getPost($this->filtrarInt($id)));
     $this->_view->renderizar('editar','post');
 
   }
 
-  public function eliminar($id)
+  public function eliminar($id='')
   {
     Session::acceso('especial');
 
