@@ -53,9 +53,36 @@ class postController extends Controller
         exit;
       }
 
+      $imagen = '';
+
+      if (isset($_FILES['imagen']['name'])) {
+        $this->getLibrary('upload'.DS.'class.upload');
+        $ruta_img = ROOT.'public'.DS.'img'.DS.'post'.DS;
+        $upload = new upload($_FILES['imagen'],'es_ES');
+        $upload->allowed = array('image/*');
+        $upload->file_new_name_body = 'upl_'.uniqid();
+        $upload->process($ruta_img);
+
+        if ($upload->processed) {
+          $imagen = $upload->file_dst_name;
+          $thumb = new upload($upload->file_dst_pathname);
+          $thumb->image_resize = true;
+          $thumb->image_x = 100;
+          $thumb->image_y = 70;
+          $thumb->file_name_body_pre = 'thumb_';
+          $thumb->process($ruta_img.'thumb'.DS);
+        } else {
+          $this->_view->assign('_error',$upload->error);
+          $this->_view->renderizar('nuevo','post');
+          exit;
+        }
+
+      }
+
       $this->_post->insertarPost(
         $this->getPostParam('titulo'),
-        $this->getPostParam('cuerpo')
+        $this->getPostParam('cuerpo'),
+        $imagen
         );
 
       $this->redireccionar('post');

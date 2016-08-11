@@ -11,7 +11,7 @@
         <div class="form-group">
           <label>Usuario:</label>
           <br>
-          <input type="text" name="usuario" value="{if isset($datos.usuario)}{$datos.usuario}{/if}" >
+          <input type="text" name="usuario" value="{$datos.usuario|default:''}" >
         </div>
 
         <div class="form-group">
@@ -19,6 +19,7 @@
           <br>
           <input type="password" name="pass" value="" >
         </div>
+
 
         <button type="submit" class="btn btn-theme">Enviar</button>
 

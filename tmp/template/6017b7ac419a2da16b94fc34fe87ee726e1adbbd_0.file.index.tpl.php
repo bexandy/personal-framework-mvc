@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.31-dev/1, created on 2016-08-10 17:26:28
+/* Smarty version 3.1.31-dev/1, created on 2016-08-11 08:52:54
   from "/home/brodriguez/public_html/framework-mvc/views/post/index.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.31-dev/1',
-  'unifunc' => 'content_57ab9c04c94c66_16951549',
+  'unifunc' => 'content_57ac7526308eb7_20945240',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6017b7ac419a2da16b94fc34fe87ee726e1adbbd' => 
     array (
       0 => '/home/brodriguez/public_html/framework-mvc/views/post/index.tpl',
-      1 => 1470864386,
+      1 => 1470919965,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_57ab9c04c94c66_16951549 (Smarty_Internal_Template $_smarty_tpl) {
+function content_57ac7526308eb7_20945240 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <section class="callaction">
   <div class="container">
@@ -52,6 +52,7 @@ function content_57ab9c04c94c66_16951549 (Smarty_Internal_Template $_smarty_tpl)
                 <th>Id</th>
                 <th>Título</th>
                 <th>Cuerpo</th>
+                <th>Imagen</th>
               </tr>
             </thead>
             <tbody>
@@ -67,6 +68,17 @@ foreach ($_from as $_smarty_tpl->tpl_vars['entrada']->value) {
 </td>
                   <td><?php echo $_smarty_tpl->tpl_vars['entrada']->value['cuerpo'];?>
 </td>
+                  <td>
+                    <?php if (isset($_smarty_tpl->tpl_vars['entrada']->value['imagen'])) {?>
+                       <a href="<?php echo $_smarty_tpl->tpl_vars['_layoutParams']->value['root'];?>
+public/img/post/<?php echo $_smarty_tpl->tpl_vars['entrada']->value['imagen'];?>
+">
+                         <img src="<?php echo $_smarty_tpl->tpl_vars['_layoutParams']->value['root'];?>
+public/img/post/thumb/thumb_<?php echo $_smarty_tpl->tpl_vars['entrada']->value['imagen'];?>
+" >
+                       </a>
+                    <?php }?>
+                  </td>
                   <td><a href="<?php echo $_smarty_tpl->tpl_vars['_layoutParams']->value['root'];?>
 post/editar/<?php echo $_smarty_tpl->tpl_vars['entrada']->value['id'];?>
 " class="btn btn-theme btn-small" title="Editar"><i class="icon-editalt"></i> Editar</a></td>

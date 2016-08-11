@@ -1,6 +1,5 @@
 <section id="content">
   <div class="container">
-    <!-- <?php if (isset($this->prueba)) echo $this->prueba; ?> -->
     <div class="row box-gray">
 
       <form role="form" id="form1" action="" method="post" >

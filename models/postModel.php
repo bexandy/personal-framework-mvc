@@ -33,15 +33,16 @@ class postModel extends Model
   }
 
 
-  public function insertarPost($titulo, $cuerpo)
+  public function insertarPost($titulo, $cuerpo, $imagen)
   {
     // $titulo y $cuerpo deben ser filtrados
     // El metodo prepare previene la inyeccion sql ya que elimina automaticamente las comillas en las consultas
-    $this->_db->prepare("INSERT INTO posts VALUES (null, :titulo, :cuerpo)")
+    $this->_db->prepare("INSERT INTO posts VALUES (null, :titulo, :cuerpo, :imagen)")
     ->execute(
       array(
         ":titulo" => $titulo,
-        ":cuerpo" => $cuerpo
+        ":cuerpo" => $cuerpo,
+        ":imagen" => $imagen
         )
       );
   }

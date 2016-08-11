@@ -28,6 +28,7 @@
                 <th>Id</th>
                 <th>Título</th>
                 <th>Cuerpo</th>
+                <th>Imagen</th>
               </tr>
             </thead>
             <tbody>
@@ -36,6 +37,13 @@
                   <td>{$entrada.id}</td>
                   <td>{$entrada.titulo}</td>
                   <td>{$entrada.cuerpo}</td>
+                  <td>
+                    {if isset($entrada.imagen)}
+                       <a href="{$_layoutParams.root}public/img/post/{$entrada.imagen}">
+                         <img src="{$_layoutParams.root}public/img/post/thumb/thumb_{$entrada.imagen}" >
+                       </a>
+                    {/if}
+                  </td>
                   <td><a href="{$_layoutParams.root}post/editar/{$entrada.id}" class="btn btn-theme btn-small" title="Editar"><i class="icon-editalt"></i> Editar</a></td>
                   <td><a href="{$_layoutParams.root}post/eliminar/{$entrada.id}" class="btn btn-danger btn-small" title="Eliminar"><i class="icon-deletefile"></i> Eliminar</a></td>
                 </tr>
