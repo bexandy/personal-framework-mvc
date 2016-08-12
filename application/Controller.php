@@ -7,10 +7,12 @@ abstract class Controller
 {
 
   protected $_view;
+  protected $_acl;
 
   public function __construct()
   {
-    $this->_view = new View(new Request);
+    $this->_acl = new Acl();
+    $this->_view = new View(new Request,$this->_acl);
   }
 
   // se obliga a que todas las clases que hereden de Controller()

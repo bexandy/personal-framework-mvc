@@ -10,12 +10,14 @@ class View extends Smarty
 {
   private $_controlador;
   private $_js;
+  private $_acl;
 
-  public function __construct(Request $peticion)
+  public function __construct(Request $peticion, Acl $acl )
   {
     parent::__construct();
     $this->_controlador = $peticion->getControlador();
     $this->_js = array();
+    $this->_acl = $acl;
   }
 
     // Método que hace la llamada a las vistas
@@ -109,6 +111,7 @@ class View extends Smarty
       throw new Exception("Error de Vista");
     }
 
+    $this->assign('_acl',$this->_acl);
     $this->assign('_layoutParams',$_params);
     $this->display('template.tpl');
   }

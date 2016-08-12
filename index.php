@@ -11,6 +11,7 @@ define('APP_PATH',ROOT.'application'.DS);
 try {
 
   require_once(APP_PATH.'Config.php');
+  require_once(APP_PATH.'Acl.php');
   require_once(APP_PATH.'Request.php');
   require_once(APP_PATH.'Boostrap.php');
   require_once(APP_PATH.'Controller.php');
@@ -19,6 +20,7 @@ try {
   require_once(APP_PATH.'Database.php');
   require_once(APP_PATH.'Session.php');
   require_once(APP_PATH.'Hash.php');
+
 
   Session::init();
 

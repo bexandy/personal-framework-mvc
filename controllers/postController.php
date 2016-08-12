@@ -28,6 +28,8 @@ class postController extends Controller
   {
     //Session::accesoEstricto(array('usuario'));
 
+    $this->_acl->acceso('nuevo_post');
+
     //$this->_view->titulo = 'Nuevo Post - '.APP_NAME;
     $this->_view->assign('titulo','Nuevo Post - '.APP_NAME);
     $this->_view->setJs(array('nuevo'));
@@ -92,6 +94,8 @@ class postController extends Controller
 
   public function editar($id='')
   {
+    $this->_acl->acceso('editar_post');
+
     if (!$this->filtrarInt($id)) {
       $this->redireccionar('post');
     }

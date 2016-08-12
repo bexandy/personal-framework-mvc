@@ -18,6 +18,8 @@ class indexController extends Controller
       // de esta forma se pasan parámetros a la vista
       //$this->_view->titulo = 'Inicio - '.APP_NAME;
 
+      // echo '<pre>';print_r($this->_acl->getPermisos()); exit;
+
       $this->_view->assign('titulo','Inicio - '.APP_NAME );
 
       // llamamos al metodo renderizar para mostrar la vista

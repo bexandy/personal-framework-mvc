@@ -61,11 +61,12 @@
 
 
 
-      {if Session::accesoViewEstricto(array('usuario'))}
-        <div class="row floatright">
-          <a href="{$_layoutParams.root}post/nuevo" class="btn btn-theme"  title="Agregar Post">
-            <i class="icon-createfile"></i> Agregar Post</a>
-          </div>
+      {*if Session::accesoViewEstricto(array('usuario'))*}
+      {if $_acl->permiso('nuevo_post')}
+      <div class="row floatright">
+        <a href="{$_layoutParams.root}post/nuevo" class="btn btn-theme"  title="Agregar Post">
+          <i class="icon-createfile"></i> Agregar Post</a>
+      </div>
       {/if}
 
       </div>
