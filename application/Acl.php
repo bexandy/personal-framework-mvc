@@ -16,7 +16,7 @@ class Acl
       if (Session::get('id_usuario')) {
         $this->_id = Session::get('id_usuario');
       } else {
-        $this->_id = 0;
+        $this->_id = 1;
       }
     }
 
